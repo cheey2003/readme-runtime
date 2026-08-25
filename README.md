@@ -64,6 +64,6 @@ Single repo: one `TEMPLATE.md` at root, one subfolder per app, each with its own
 
 **Dispatch Room** — a self-hosted PHP IOU tracker (iou.subsite.dev) with REST endpoints (`remote_add`, `remote_balances`, `remote_transactions`, `remote_endpoints`). See `dispatch-room/README.md` once retrofitted against the template.
 
-## Prior art
+## Credit
 
-[Interpretable Context Methodology (ICM)](https://github.com/RinDig/Interpretable-Context-Methodology) — folder structure as agent architecture. Borrowed: stage-contract format (Inputs/Process/Outputs), canonical sources (one file owns a fact, others point to it), lightweight pre-mutation audits. Not borrowed: numbered stage folders, layered context loading, human checkpoints between stages — those solve a multi-step pipeline problem this pattern doesn't have (single-shot, one folder, one schema, one call per command).
+[Interpretable Context Methodology (ICM)](https://github.com/RinDig/Interpretable-Context-Methodology) — folder structure as agent architecture. Adapted: stage-contract format (Inputs/Process/Outputs), canonical sources (one file owns a fact, others point to it), lightweight pre-mutation audits.
