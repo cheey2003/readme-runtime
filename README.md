@@ -62,7 +62,7 @@ Single repo: one `TEMPLATE.md` at root, one subfolder per app, each with its own
 
 ## First instance
 
-**Dispatch Room** — a self-hosted PHP IOU tracker (iou.subsite.dev) with REST endpoints (`remote_add`, `remote_balances`, `remote_transactions`, `remote_endpoints`). See `dispatch-room/README.md` once retrofitted against the template.
+**Dispatch Room** — a self-hosted PHP web application with REST endpoints (`remote_add`, `remote_balances`, `remote_transactions`, `remote_endpoints`). See `dispatch-room/README.md` once retrofitted against the template.
 
 ## Credit
 
