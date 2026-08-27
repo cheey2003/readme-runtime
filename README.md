@@ -25,7 +25,7 @@ The trade is reach. This pattern depends on a terminal session and Claude's Remo
 
 In spirit, yes. The README takes the place of a tool schema, and the Claude Code session takes the place of a client that reads that schema and calls the API on the user's behalf. That is the same basic shape as MCP: a description of a tool surface, paired with a runtime that acts on it.
 
-The difference is what is missing. The session builds an HTTP request directly from prose rather than through a described call. A discovery mechanism is absent too, so the runtime finds the schema only because it happens to sit in the folder where the session started. In place of a typed registry, a risk tier and a checklist written in markdown stand in for a formal contract. A model inferring the right call from prose is a weaker guarantee than a client invoking a described tool, and that gap is the price of skipping the engineering MCP requires.
+Instead of engineering the protocol, discovery, and registry that MCP requires, readme-runtime substitutes three lighter stand-ins: prose parsed directly into an HTTP request in place of a described call, folder convention in place of a discovery mechanism (the runtime finds the schema because it happens to sit in the folder where the session started), and a risk tier plus a checklist written in markdown in place of a typed registry. A model inferring the right call from prose is a weaker guarantee than a client invoking a described tool, and that gap is the price of skipping the engineering MCP requires.
 
 ## Folders as dispatch rooms
 
