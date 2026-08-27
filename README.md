@@ -25,7 +25,7 @@ The trade is reach. This pattern depends on a terminal session and Claude's Remo
 
 In spirit, yes. The README takes the place of a tool schema, and the Claude Code session takes the place of a client that reads that schema and calls the API on the user's behalf. That is the same basic shape as MCP: a description of a tool surface, paired with a runtime that acts on it.
 
-The difference is what is missing. A protocol layer is absent, so the session builds an HTTP request directly from prose rather than through a described call. A discovery mechanism is absent too, so the runtime finds the schema only because it happens to sit in the folder where the session started. In place of a typed registry, a risk tier and a checklist written in markdown stand in for a formal contract. A model inferring the right call from prose is a weaker guarantee than a client invoking a described tool, and that gap is the price of skipping the engineering MCP requires.
+The difference is what is missing. The session builds an HTTP request directly from prose rather than through a described call. A discovery mechanism is absent too, so the runtime finds the schema only because it happens to sit in the folder where the session started. In place of a typed registry, a risk tier and a checklist written in markdown stand in for a formal contract. A model inferring the right call from prose is a weaker guarantee than a client invoking a described tool, and that gap is the price of skipping the engineering MCP requires.
 
 ## Folders as dispatch rooms
 
@@ -93,3 +93,7 @@ Every endpoint carries one of three risk tiers, and the tier decides what must h
 Guardrails also cap blast radius (the largest amount or quantity a single call can touch) and rate (the largest number of calls allowed in a given window). A request that would exceed either cap gets treated as irreversible tier, regardless of its usual classification.
 
 Once the README is filled in, start a Claude Code session in that folder, ask it to read the README, and test with one read-only call and one mutating call before trusting it for real use.
+
+## Roadmap
+
+- Support multiple users.
