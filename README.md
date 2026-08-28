@@ -100,8 +100,8 @@ This pattern is single-operator by design, and that's a structural property, not
 
 - **Remote Control is you, not a channel.** RC gives you remote access to a specific, already-running Claude Code session tied to your own account — it's your agent, reachable by you, from another device. It has no concept of routing an inbound message from someone else into a scoped session; there's no per-sender identity, no allowlist, nothing that lets a third party reach the runtime at all. Access to the folder means access to everything that session's README permits.
 - **No built-in path for many isolated users sharing one deployment.** One folder, one session, one operator. Serving multiple external users each with their own scope and credentials — a customer-facing product rather than a personal tool — isn't something this pattern does on its own.
-- **The fix is a separate layer, not a variant of this pattern.** A gateway service (chat-channel ingestion, per-sender routing, isolated per-client tool sets and credentials) can sit in front of a folder and add both multi-user reach and non-terminal access, but that's a distinct piece of infrastructure this pattern hands off to — not something readme-runtime itself grows into.
+- **The fix is a separate layer, not a variant of this pattern.** A gateway service (chat-channel ingestion, per-sender routing, isolated per-client tool sets and credentials) can sit in front of a folder and add both multi-user reach and non-terminal access, but that's a distinct piece of infrastructure this pattern hands off to — not something readme-runtime itself grows into. See `GATEWAY.md` for a concrete design of that layer, plus a `clients/` convention for per-client identity and scope.
 
 ## Roadmap
 
-- Support multiple users — via a gateway layer per Limitations above, not a change to the folder/README pattern itself.
+- Support multiple users — via the gateway layer specced in `GATEWAY.md`, not a change to the folder/README pattern itself.
