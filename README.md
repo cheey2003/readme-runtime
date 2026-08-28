@@ -1,6 +1,6 @@
 # readme-runtime
 
-readme-runtime is an agent deployment pattern for people already using Claude Code. It turns a single markdown file into a tool schema and a Claude Code session into the runtime that reads it. Getting it running does not involve standing up a service, implementing a protocol, or building a separate application. If Claude Code already sits in your workflow, this approach adds a working agent for a REST API in about the time it takes to write one file.
+readme-runtime is a single-operator agent deployment pattern for people already using Claude Code. It turns a single markdown file into a tool schema and a Claude Code session into the runtime that reads it. Getting it running does not involve standing up a service, implementing a protocol, or building a separate application. If Claude Code already sits in your workflow, this approach adds a working agent for a REST API in about the time it takes to write one file.
 
 It fits internal tools, personal automation, and natural language task initiation against systems you already control, rather than a customer facing product serving many isolated users from one session.
 
@@ -19,7 +19,7 @@ Four properties make this worth choosing over building a dedicated agent:
 - **Quick to deploy.** Standing up a new integration means copying a template, filling in the endpoints, and starting a session in that folder. A first working version is achievable in one sitting.
 - **Durable against model updates.** Custom orchestration code competes directly with the model vendor's own roadmap, so a feature update can obsolete the whole framework built on top of it. A folder absorbs that same kind of update instead. When a vendor turns some piece of routing into a native model capability, that capability becomes a new tool or subtask node inside the same folder, rather than a reason to rebuild.
 
-The trade is reach. This pattern depends on a terminal session and Claude's Remote Control for access, and it does not include a built-in path for many isolated users sharing one deployment. A gateway service can sit in front of a folder and add either capability, though that is a separate concern from the pattern itself.
+The trade is reach — see Limitations below.
 
 ## Is this a low-tech MCP?
 
@@ -94,6 +94,14 @@ Guardrails also cap blast radius (the largest amount or quantity a single call c
 
 Once the README is filled in, start a Claude Code session in that folder, ask it to read the README, and test with one read-only call and one mutating call before trusting it for real use.
 
+## Limitations
+
+This pattern is single-operator by design, and that's a structural property, not a missing feature to configure around.
+
+- **Remote Control is you, not a channel.** RC gives you remote access to a specific, already-running Claude Code session tied to your own account — it's your agent, reachable by you, from another device. It has no concept of routing an inbound message from someone else into a scoped session; there's no per-sender identity, no allowlist, nothing that lets a third party reach the runtime at all. Access to the folder means access to everything that session's README permits.
+- **No built-in path for many isolated users sharing one deployment.** One folder, one session, one operator. Serving multiple external users each with their own scope and credentials — a customer-facing product rather than a personal tool — isn't something this pattern does on its own.
+- **The fix is a separate layer, not a variant of this pattern.** A gateway service (chat-channel ingestion, per-sender routing, isolated per-client tool sets and credentials) can sit in front of a folder and add both multi-user reach and non-terminal access, but that's a distinct piece of infrastructure this pattern hands off to — not something readme-runtime itself grows into.
+
 ## Roadmap
 
-- Support multiple users.
+- Support multiple users — via a gateway layer per Limitations above, not a change to the folder/README pattern itself.
